@@ -14,6 +14,11 @@
 <meta name="twitter:title" content="What Piyushii Considers Anvi">
 <meta name="twitter:description" content="What Piyushii Considers Anvi">
 <meta name="apple-mobile-web-app-title" content="What Piyushii Considers Anvi">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#5a1124">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@500;600;700&family=EB+Garamond:ital,wght@0,500;0,700;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Marcellus&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -148,6 +153,8 @@ body:not(.shown) .gold{animation-play-state:paused}
 #gate.go #enter::after{animation:none;opacity:0}
 @keyframes glow{0%,100%{opacity:0}50%{opacity:1}}
 @media (prefers-reduced-motion:reduce){.gold{animation:none}}
+/* anti-blink: while the window is resizing / leaving fullscreen, freeze the foil shimmer so the covers can re-paint in peace */
+body.settling .gold{animation-play-state:paused!important}
 </style>
 </head>
 <body>
@@ -284,7 +291,7 @@ try{var c=document.createElement('canvas'),q=c.getContext('2d'),sm=document.crea
  var im=g.createImageData(256,256);for(var x=0;x<im.data.length;x+=4){im.data[x]=100;im.data[x+1]=76;im.data[x+2]=50;im.data[x+3]=Math.random()*30}
  g.putImageData(im,0,0);q.imageSmoothingEnabled=true;q.drawImage(sm,0,0,256,256);
  document.documentElement.style.setProperty('--noise','url('+c.toDataURL('image/png')+')')}catch(e){}
-Wpx=wrap.offsetWidth;pose(true);addEventListener('resize',function(){Wpx=wrap.offsetWidth;pose(true);fitTitle()});
+Wpx=wrap.offsetWidth;pose(true);var rzT=0;addEventListener('resize',function(){settle();clearTimeout(rzT);rzT=setTimeout(function(){Wpx=wrap.offsetWidth;pose(true);fitTitle()},150)});
 addEventListener('load',fitTitle);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fitTitle);document.fonts.addEventListener&&document.fonts.addEventListener('loadingdone',fitTitle)}else fitTitle();
 function fitGate(){var hs=[].slice.call(document.querySelectorAll('.gb h1'));if(!hs.length)return;
  hs.forEach(function(h){h.style.fontSize='34px'});
@@ -349,22 +356,6 @@ function fitTitle(){
 /* text fit: every page gets the largest text size that still fits it (capped), so nothing can ever overflow */
 var fitTimer=0,fitted=false,fitW=0,fitH=0;
 function vis(){for(var k=0;k<N;k++)leaves[k].style.display=(k>0&&k<N-1&&(k<i-3||k>i+3))?'none':''}
-/* After leaving fullscreen (or any resize / rotate / app switch) some in-app browsers (Instagram's) lose the 3D layers of the book:
-   the cover turns invisible and the pages show through. Re-apply every leaf transform at the new size and rebuild the layers. */
-var rbT=0;
-function rebuild3d(){
- if(!stage.classList.contains('in'))return;
- if(busy||leaves.some(function(l){return l._an})){clearTimeout(rbT);rbT=setTimeout(rebuild3d,300);return}
- Wpx=wrap.offsetWidth;
- var prev=leaves.map(function(l){return l.style.display});
- leaves.forEach(function(l,k){var f=k<i;l.style.transform=rest(k,f);l.style.zIndex=zi(k,f);l.style.display='none'});
- void wrap.offsetWidth;
- leaves.forEach(function(l,k){l.style.display=prev[k]});
- vis()}
-function rebuildSoon(){clearTimeout(rbT);rbT=setTimeout(function(){rebuild3d();setTimeout(rebuild3d,500);setTimeout(rebuild3d,1300)},120)}
-['fullscreenchange','webkitfullscreenchange','resize','orientationchange','pageshow'].forEach(function(n){addEventListener(n,rebuildSoon)});
-document.addEventListener('fullscreenchange',rebuildSoon);document.addEventListener('webkitfullscreenchange',rebuildSoon);
-document.addEventListener('visibilitychange',function(){if(!document.hidden)rebuildSoon()});
 function fitPages(){
  if(fitted&&gate.classList.contains('go'))return;
  leaves.forEach(function(l){l.style.display=''});
@@ -405,13 +396,24 @@ function flip(dir){
 var kEnd=0,kOn=false,kv=0;
 function kick(ms){var bg=document.getElementById('bgfill');kEnd=Math.max(kEnd,Date.now()+ms);if(kOn)return;kOn=true;
  (function f(){kv^=1;bg.style.background=kv?'#fffffe':'#fff';if(Date.now()<kEnd)requestAnimationFrame(f);else{kOn=false;bg.style.background='#fff'}})()}
-['fullscreenchange','webkitfullscreenchange'].forEach(function(n){document.addEventListener(n,function(){kick(1800)})});
-document.addEventListener('visibilitychange',function(){if(!document.hidden)kick(1200)});
+function inFS(){return !!(document.fullscreenElement||document.webkitFullscreenElement)}
+/* settle: calm period after resize / fullscreen exit / tab return. The per-frame kick() loop made the covers flicker there, so it is only used when ENTERING fullscreen; on exit we freeze the foil animation and do two single repaint nudges instead. */
+var setT=0,nudT=0;
+function nudge(){var bg=document.getElementById('bgfill');bg.style.background='#fffffe';requestAnimationFrame(function(){requestAnimationFrame(function(){bg.style.background='#fff'})})}
+function settle(){document.body.classList.add('settling');clearTimeout(setT);
+ setT=setTimeout(function(){document.body.classList.remove('settling');nudge()},1300)}
+['fullscreenchange','webkitfullscreenchange'].forEach(function(n){document.addEventListener(n,function(){
+ if(inFS()){kick(1800)}else{settle();nudge();clearTimeout(nudT);nudT=setTimeout(nudge,350)}})});
+document.addEventListener('visibilitychange',function(){if(!document.hidden){settle();nudge()}});
+addEventListener('pageshow',function(){settle();nudge()});
 /* enter */
 /* Fullscreen first, animation second: the browser switch to fullscreen resizes the whole window, so nothing else
    (fade, doors, sound, frame-forcing) is started until the browser is painting again. Everything inside begin() keeps
    the exact same timing relative to its own start. */
 var USE_FULLSCREEN=true,entering=false;
+/* opened from the home-screen icon: already fullscreen from launch, so no switch (and no flash) */
+var IN_APP=(function(){try{return matchMedia('(display-mode: fullscreen)').matches||matchMedia('(display-mode: standalone)').matches||navigator.standalone===true}catch(e){return false}})();
+if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(function(){});
 document.getElementById('enter').addEventListener('click',function(){
  if(entering||gate.classList.contains('go'))return;entering=true;
  initAudio();
@@ -432,7 +434,7 @@ document.getElementById('enter').addEventListener('click',function(){
   (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(ready,ready)}
  function painting(){requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(begin,120)})})}
  try{
-  var el=document.documentElement,rf=USE_FULLSCREEN&&!document.fullscreenElement&&!document.webkitFullscreenElement&&(el.requestFullscreen||el.webkitRequestFullscreen);
+  var el=document.documentElement,rf=USE_FULLSCREEN&&!IN_APP&&!document.fullscreenElement&&!document.webkitFullscreenElement&&(el.requestFullscreen||el.webkitRequestFullscreen);
   if(rf){var p=rf.call(el,{navigationUI:'hide'});
    if(p&&p.then)p.then(painting,begin);else setTimeout(begin,400);
    setTimeout(begin,2500)}
