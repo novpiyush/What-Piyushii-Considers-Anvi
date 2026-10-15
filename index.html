@@ -157,10 +157,9 @@ body:not(.shown) .gold{animation-play-state:paused}
 body.settling .gold{animation-play-state:paused!important}
 /* entrance animation is over: release it so the browser never replays / re-composites it after a fullscreen switch */
 #stage.done>*{animation:none!important;opacity:1;transform:none;will-change:auto}
-/* leaving fullscreen: the in-app browser rebuilds the whole surface and the covers blink. Hide the book for that moment and fade it back once everything has settled. */
-#stage{transition:opacity .55s ease}
-#stage.veil{opacity:0!important;transition:none!important}
-#stage.veil .leaf{will-change:auto!important}
+/* leaving fullscreen: the in-app browser rebuilds the whole surface. A white curtain (not opacity:0 on the book, so the covers keep being painted underneath) hides that moment and lifts once pages AND covers are ready, so both appear together. */
+#veilov{position:fixed;inset:0;z-index:60;background:rgba(255,255,255,.985);opacity:0;pointer-events:none;transition:opacity .6s ease}
+#veilov.on{opacity:1;transition:none}
 </style>
 </head>
 <body>
@@ -409,11 +408,11 @@ function inFS(){return !!(document.fullscreenElement||document.webkitFullscreenE
 /* settle: calm period after resize / fullscreen exit / tab return. The per-frame kick() loop made the covers flicker there, so it is only used when ENTERING fullscreen; on exit we freeze the foil animation and do two single repaint nudges instead. */
 var setT=0,nudT=0;
 function nudge(){var bg=document.getElementById('bgfill');bg.style.background='#fffffe';requestAnimationFrame(function(){requestAnimationFrame(function(){bg.style.background='#fff'})})}
-var veiled=false,vT=0,vMax=0;
-function bump(){clearTimeout(vT);vT=setTimeout(unveil,800)}
-function veil(){stage.classList.add('veil');veiled=true;clearTimeout(vMax);vMax=setTimeout(unveil,2600);bump()}
+var veiled=false,vT=0,vMax=0,vo=document.createElement('div');vo.id='veilov';document.body.appendChild(vo);
+function bump(){clearTimeout(vT);vT=setTimeout(unveil,1500)}
+function veil(){vo.classList.add('on');veiled=true;clearTimeout(vMax);vMax=setTimeout(unveil,3500);bump()}
 function unveil(){if(!veiled)return;veiled=false;clearTimeout(vT);clearTimeout(vMax);
- requestAnimationFrame(function(){requestAnimationFrame(function(){stage.classList.remove('veil')})})}
+ requestAnimationFrame(function(){requestAnimationFrame(function(){vo.classList.remove('on')})})}
 function settle(){document.body.classList.add('settling');clearTimeout(setT);
  setT=setTimeout(function(){document.body.classList.remove('settling');nudge()},1300)}
 ['fullscreenchange','webkitfullscreenchange'].forEach(function(n){document.addEventListener(n,function(){
