@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
 <title>What Piyushii Considers Anvi</title>
 <meta name="description" content="What Piyushii Considers Anvi">
 <meta property="og:type" content="website">
@@ -17,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@500;600;700&family=EB+Garamond:ital,wght@0,500;0,700;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Marcellus&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
-:root{--wine:#5a1124;--wine2:#2a0710;--gold:#c9a24a;--goldd:#8a6a1f;--paper:#f6eedb;--ink:#3a2620;--accent:#7a1830;
+:root{color-scheme:light;--wine:#5a1124;--wine2:#2a0710;--gold:#c9a24a;--goldd:#8a6a1f;--paper:#f6eedb;--ink:#3a2620;--accent:#7a1830;
 --goldfx:linear-gradient(115deg,#8a6a1f 0%,#f6e27a 26%,#b8891f 46%,#fff1a8 66%,#8a6a1f 100%);
 --sf:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Inter',system-ui,'Helvetica Neue',Arial,sans-serif;--script:'Pinyon Script','Brush Script MT',cursive;--serif:'EB Garamond','Cormorant Garamond',Garamond,Georgia,serif;--cinzel:'Cinzel','Trajan Pro',Georgia,serif;--body:'Lora',Georgia,serif;--caps:'Marcellus','Times New Roman',serif;
 --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -30,6 +31,7 @@ html:fullscreen,body:fullscreen{background:#fff}
 body{height:100%;overflow:hidden;background:#fff;color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;-webkit-tap-highlight-color:transparent;user-select:none;touch-action:none}
 /* layout */
 #stage{--W:min(90vw,56dvh);position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage:not(.in):not(.warm){visibility:hidden}
 #stage>*{opacity:.01;will-change:transform,opacity}
 #stage.in>*{animation:riseO 1.3s cubic-bezier(.4,0,.25,1) .75s both,riseT 1.9s cubic-bezier(.16,.8,.28,1) .75s both}
 @keyframes riseO{from{opacity:0}to{opacity:1}}
@@ -115,12 +117,11 @@ body:not(.shown) .gold{animation-play-state:paused}
 #gate.open .cp.l{transform:translateX(-100%)}
 #gate.open .cp.r{transform:translateX(100%)}
 /* golden line borders (from v20) - fade with the text, curtains untouched */
-.frm{--m:clamp(10px,3.4vw,18px);--mt:calc(var(--m) + env(safe-area-inset-top,0px));--mb:calc(var(--m) + env(safe-area-inset-bottom,0px));position:absolute;inset:0;z-index:2;pointer-events:none;transition:opacity 1.5s cubic-bezier(.45,.05,.25,1)}
+.frm{--m:clamp(10px,3.4vw,18px);--mt:calc(var(--m) + env(safe-area-inset-top,0px));--mb:calc(var(--m) + env(safe-area-inset-bottom,0px));position:absolute;inset:0;z-index:2;pointer-events:none;will-change:opacity;transition:opacity 1.5s cubic-bezier(.45,.05,.25,1)}
 #gate.go .frm{opacity:0}
-.fr{position:absolute;z-index:4;pointer-events:none;padding:2px;border-radius:7px;background:var(--goldfx);
--webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
+.fr{position:absolute;z-index:4;pointer-events:none;border:2px solid transparent;border-radius:7px;background:linear-gradient(#fff,#fff) padding-box,var(--goldfx) border-box}
 .f1{inset:var(--mt) var(--m) var(--mb)}
-.f2{inset:calc(var(--mt) + 8px) calc(var(--m) + 8px) calc(var(--mb) + 8px);padding:1px;border-radius:4px;opacity:.85}
+.f2{inset:calc(var(--mt) + 8px) calc(var(--m) + 8px) calc(var(--mb) + 8px);border-width:1px;border-radius:4px;opacity:.85}
 .f3{position:absolute;z-index:4;pointer-events:none;inset:calc(var(--mt) + 15px) calc(var(--m) + 15px) calc(var(--mb) + 15px);border:1px dashed rgba(184,137,31,.5);border-radius:3px}
 .fc{position:absolute;z-index:5;pointer-events:none;inset:var(--mt) var(--m) var(--mb)}
 .fc i{position:absolute;width:10px;height:10px;background:var(--goldfx);transform:rotate(45deg);box-shadow:0 0 0 1px rgba(90,17,36,.55)}
@@ -138,12 +139,14 @@ body:not(.shown) .gold{animation-play-state:paused}
 .gd span{width:clamp(34px,13vw,84px);height:1px;background:linear-gradient(90deg,transparent,#b8891f)}
 .gd span:last-child{transform:scaleX(-1)}
 .gh{width:clamp(16px,4.4vw,22px);height:clamp(16px,4.4vw,22px);fill:var(--gold)}
-#enter{font-family:var(--cinzel);font-weight:700;font-size:15px;letter-spacing:.24em;text-indent:.24em;text-transform:uppercase;margin-top:clamp(4px,1.2dvh,12px);padding:.95em 2.6em;color:#fff;background:var(--wine);border:0;border-radius:999px;cursor:pointer;opacity:0;box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--gold),0 10px 22px rgba(90,17,36,.26);animation:fade 1s 1.5s forwards,glow 3.2s 2.7s ease-in-out infinite;transition:background .3s,transform .2s}
+#enter{font-family:var(--cinzel);font-weight:700;font-size:15px;letter-spacing:.24em;text-indent:.24em;text-transform:uppercase;margin-top:clamp(4px,1.2dvh,12px);padding:.95em 2.6em;color:#fff;background:var(--wine);border:0;border-radius:999px;cursor:pointer;position:relative;opacity:0;box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--gold),0 10px 22px rgba(90,17,36,.26);animation:fade 1s 1.5s forwards;transition:background .3s,transform .2s}
 #enter:hover,#enter:focus-visible{background:#7a1830;outline:none}
 #enter:active{transform:scale(.97)}
 @keyframes fade{to{opacity:1}}
 @keyframes rev{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@keyframes glow{0%,100%{box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--gold),0 10px 22px rgba(90,17,36,.26)}50%{box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--gold),0 0 30px 6px rgba(90,17,36,.28)}}
+#enter::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 30px 6px rgba(90,17,36,.28);opacity:0;pointer-events:none;will-change:opacity;animation:glow 3.2s 2.7s ease-in-out infinite}
+#gate.go #enter::after{animation:none;opacity:0}
+@keyframes glow{0%,100%{opacity:0}50%{opacity:1}}
 @media (prefers-reduced-motion:reduce){.gold{animation:none}}
 </style>
 </head>
@@ -344,7 +347,7 @@ function fitTitle(){
  [].forEach.call(document.querySelectorAll('.ctitle .line'),function(ln){ln.style.marginTop=ln.style.marginBottom=(u*1.1)+'px'});
 }
 /* text fit: every page gets the largest text size that still fits it (capped), so nothing can ever overflow */
-var fitTimer=0,fitted=false;
+var fitTimer=0,fitted=false,fitW=0,fitH=0;
 function vis(){for(var k=0;k<N;k++)leaves[k].style.display=(k>0&&k<N-1&&(k<i-3||k>i+3))?'none':''}
 function fitPages(){
  if(fitted&&gate.classList.contains('go'))return;
@@ -360,7 +363,7 @@ function fitPages(){
   function okl(x){p.style.setProperty('--lh',x);return inn.offsetHeight<=lim-1}
   var a=1.45,z=1.78;if(okl(z)){a=z}else{p.style.setProperty('--lh',a);for(var q=0;q<10;q++){var mm=(a+z)/2;if(okl(mm))a=mm;else z=mm}}
   p.style.setProperty('--lh',a.toFixed(3))});
- fitted=true;vis()}
+ fitted=true;fitW=innerWidth;fitH=innerHeight;vis()}
 if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){fitPages()});if(document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',function(){clearTimeout(fitTimer);fitTimer=setTimeout(fitPages,60)})}else fitPages();
 setTimeout(fitPages,1500);
 /* flip: pages swing on the spine, book itself never moves, scales or rotates */
@@ -389,23 +392,36 @@ function kick(ms){var bg=document.getElementById('bgfill');kEnd=Math.max(kEnd,Da
 ['fullscreenchange','webkitfullscreenchange'].forEach(function(n){document.addEventListener(n,function(){kick(1800)})});
 document.addEventListener('visibilitychange',function(){if(!document.hidden)kick(1200)});
 /* enter */
+/* Fullscreen first, animation second: the browser switch to fullscreen resizes the whole window, so nothing else
+   (fade, doors, sound, frame-forcing) is started until the browser is painting again. Everything inside begin() keeps
+   the exact same timing relative to its own start. */
+var USE_FULLSCREEN=true,entering=false;
 document.getElementById('enter').addEventListener('click',function(){
- if(gate.classList.contains('go'))return;
- fitPages();initAudio();
- if(ctx)sndPress();
- gate.classList.add('go');kick(1500);
- var need=2,t0=Date.now(),started=false,fired=false;
- function startDoors(){if(started)return;started=true;
-  if(ctx)setTimeout(sndDoors,150);
-  /* doors and book are started in the same frame; the book's rise carries a .75s delay (0.15s door delay + ~0.6s to reach 25%), so both run on one timeline with no timer jitter */
-  fitTitle();gate.classList.add('open');stage.classList.add('in');setTimeout(fitTitle,1200);
-  setTimeout(function(){gate.classList.add('hide')},1900);
-  setTimeout(function(){document.body.classList.add('shown')},3000)}
- function ready(){if(--need>0)return;setTimeout(startDoors,Math.max(0,1500-(Date.now()-t0)))}
- function fsDone(){if(fired)return;fired=true;setTimeout(ready,180)}
- (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(ready,ready);
- try{var el=document.documentElement,rf=el.requestFullscreen||el.webkitRequestFullscreen;if(rf){var p=rf.call(el);if(p&&p.then)p.then(fsDone,fsDone);else setTimeout(fsDone,400)}else fsDone()}catch(e){fsDone()}
- setTimeout(fsDone,900);
+ if(entering||gate.classList.contains('go'))return;entering=true;
+ initAudio();
+ var began=false;
+ function begin(){if(began)return;began=true;
+  if(!fitted||fitW!==innerWidth||fitH!==innerHeight)fitPages();
+  if(ctx)sndPress();
+  stage.classList.add('warm');
+  gate.classList.add('go');kick(1500);
+  var need=1,t0=Date.now(),started=false;
+  function startDoors(){if(started)return;started=true;
+   if(ctx)setTimeout(sndDoors,150);
+   /* doors and book are started in the same frame; the book's rise carries a .75s delay (0.15s door delay + ~0.6s to reach 25%), so both run on one timeline with no timer jitter */
+   fitTitle();gate.classList.add('open');stage.classList.add('in');setTimeout(fitTitle,1200);
+   setTimeout(function(){gate.classList.add('hide')},1900);
+   setTimeout(function(){document.body.classList.add('shown')},3000)}
+  function ready(){if(--need>0)return;setTimeout(startDoors,Math.max(0,1500-(Date.now()-t0)))}
+  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(ready,ready)}
+ function painting(){requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(begin,120)})})}
+ try{
+  var el=document.documentElement,rf=USE_FULLSCREEN&&!document.fullscreenElement&&!document.webkitFullscreenElement&&(el.requestFullscreen||el.webkitRequestFullscreen);
+  if(rf){var p=rf.call(el,{navigationUI:'hide'});
+   if(p&&p.then)p.then(painting,begin);else setTimeout(begin,400);
+   setTimeout(begin,2500)}
+  else begin()
+ }catch(e){begin()}
 });
 /* input */
 var sx=0,sy=0,t0=0;
