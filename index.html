@@ -155,6 +155,8 @@ body:not(.shown) .gold{animation-play-state:paused}
 @media (prefers-reduced-motion:reduce){.gold{animation:none}}
 /* anti-blink: while the window is resizing / leaving fullscreen, freeze the foil shimmer so the covers can re-paint in peace */
 body.settling .gold{animation-play-state:paused!important}
+/* entrance animation is over: release it so the browser never replays / re-composites it after a fullscreen switch */
+#stage.done>*{animation:none!important;opacity:1;transform:none;will-change:auto}
 </style>
 </head>
 <body>
@@ -274,6 +276,10 @@ body.settling .gold{animation-play-state:paused!important}
 (function(){
 var wrap=document.getElementById('wrap'),stage=document.getElementById('stage'),gate=document.getElementById('gate'),ht=document.getElementById('ht'),
 leaves=[].slice.call(wrap.querySelectorAll('.leaf')),N=leaves.length,i=0,busy=false,ctx=null,master=null,nb=null,DUR=1500,EASE='cubic-bezier(.4,.08,.35,1)',Wpx=0,Z=.6;
+var lockW0=0;
+function lockW(){var w=innerWidth;if(lockW0&&Math.abs(w-lockW0)<3)return;lockW0=w;
+ stage.style.setProperty('--W',Math.min(w*.9,innerHeight*.56).toFixed(2)+'px')}
+lockW();
 var HINTS=['Anvi swipe or tap to Open','Swipe or tap to turn the Page','Swipe or tap to close the Book','Swipe right to go Back'];
 function pp(){return (Wpx||320)*5}
 function rest(k,f){return 'perspective('+pp()+'px) '+(f?'rotateY(-180deg)':'rotateY(0deg)')}
@@ -291,7 +297,7 @@ try{var c=document.createElement('canvas'),q=c.getContext('2d'),sm=document.crea
  var im=g.createImageData(256,256);for(var x=0;x<im.data.length;x+=4){im.data[x]=100;im.data[x+1]=76;im.data[x+2]=50;im.data[x+3]=Math.random()*30}
  g.putImageData(im,0,0);q.imageSmoothingEnabled=true;q.drawImage(sm,0,0,256,256);
  document.documentElement.style.setProperty('--noise','url('+c.toDataURL('image/png')+')')}catch(e){}
-Wpx=wrap.offsetWidth;pose(true);var rzT=0;addEventListener('resize',function(){settle();clearTimeout(rzT);rzT=setTimeout(function(){Wpx=wrap.offsetWidth;pose(true);fitTitle()},150)});
+Wpx=wrap.offsetWidth;pose(true);var rzT=0;addEventListener('resize',function(){settle();clearTimeout(rzT);rzT=setTimeout(function(){lockW();Wpx=wrap.offsetWidth;pose(true);fitTitle()},150)});
 addEventListener('load',fitTitle);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fitTitle);document.fonts.addEventListener&&document.fonts.addEventListener('loadingdone',fitTitle)}else fitTitle();
 function fitGate(){var hs=[].slice.call(document.querySelectorAll('.gb h1'));if(!hs.length)return;
  hs.forEach(function(h){h.style.fontSize='34px'});
@@ -429,6 +435,7 @@ document.getElementById('enter').addEventListener('click',function(){
    /* doors and book are started in the same frame; the book's rise carries a .75s delay (0.15s door delay + ~0.6s to reach 25%), so both run on one timeline with no timer jitter */
    fitTitle();gate.classList.add('open');stage.classList.add('in');setTimeout(fitTitle,1200);
    setTimeout(function(){gate.classList.add('hide')},1900);
+   setTimeout(function(){stage.classList.add('done')},3300);
    setTimeout(function(){document.body.classList.add('shown')},3000)}
   function ready(){if(--need>0)return;setTimeout(startDoors,Math.max(0,1500-(Date.now()-t0)))}
   (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(ready,ready)}
