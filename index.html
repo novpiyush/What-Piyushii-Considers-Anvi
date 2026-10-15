@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What Piyushii Considers Anvi</title>
+<meta name="description" content="What Piyushii Considers Anvi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What Piyushii Considers Anvi">
+<meta property="og:description" content="What Piyushii Considers Anvi">
+<meta property="og:site_name" content="What Piyushii Considers Anvi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What Piyushii Considers Anvi">
+<meta name="twitter:description" content="What Piyushii Considers Anvi">
+<meta name="apple-mobile-web-app-title" content="What Piyushii Considers Anvi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@500;600;700&family=EB+Garamond:ital,wght@0,500;0,700;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Marcellus&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#5a1124;--wine2:#2a0710;--gold:#c9a24a;--goldd:#8a6a1f;--paper:#f6eedb;--ink:#3a2620;--accent:#7a1830;
+--goldfx:linear-gradient(115deg,#8a6a1f 0%,#f6e27a 26%,#b8891f 46%,#fff1a8 66%,#8a6a1f 100%);
+--sf:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Inter',system-ui,'Helvetica Neue',Arial,sans-serif;--script:'Pinyon Script','Brush Script MT',cursive;--serif:'EB Garamond','Cormorant Garamond',Garamond,Georgia,serif;--cinzel:'Cinzel','Trajan Pro',Georgia,serif;--body:'Lora',Georgia,serif;--caps:'Marcellus','Times New Roman',serif;
+--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html{height:100%;background:#fff;scroll-padding-top:env(safe-area-inset-top,0px)}
+html:fullscreen,body:fullscreen{background:#fff}
+::backdrop{background:#fff}
+#bgfill{position:fixed;inset:0;z-index:-1;background:#fff;pointer-events:none}
+body{height:100%;overflow:hidden;background:#fff;color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;-webkit-tap-highlight-color:transparent;user-select:none;touch-action:none}
+/* layout */
+#stage{--W:min(90vw,56dvh);position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage>*{opacity:.01;will-change:transform,opacity}
+#stage.in>*{animation:riseO 1.3s cubic-bezier(.4,0,.25,1) .75s both,riseT 1.9s cubic-bezier(.16,.8,.28,1) .75s both}
+@keyframes riseO{from{opacity:0}to{opacity:1}}
+@keyframes riseT{from{transform:translateY(7dvh)}to{transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(3dvh)}to{opacity:1;transform:none}}
+#stage{--hf:clamp(14px,2.1dvh,19px)}
+#hint{position:absolute;left:0;right:0;bottom:calc(50% + var(--W)*.745 + 2.6dvh);justify-content:center;display:flex;align-items:center;gap:14px;font-family:var(--serif);font-style:normal;font-weight:500;font-size:var(--hf);letter-spacing:.06em;color:var(--wine);white-space:nowrap;min-height:1.6em}
+#hint::before,#hint::after{content:"";width:clamp(18px,6vw,44px);height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+#hint::after{transform:scaleX(-1)}
+#ht{transition:opacity .35s}#ht.o{opacity:0}
+/* book: fixed size, never scaled or tilted */
+#scene{--u:calc(var(--W)/100);position:relative;width:var(--W);height:calc(var(--W)*1.45)}
+#wrap{position:absolute;inset:0;transform:translateX(calc(var(--u)*-.9));transition:transform 1.5s cubic-bezier(.4,.08,.35,1)}
+#wrap.back{transform:translateX(calc(var(--W) + var(--u)*.9))}
+.leaf{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;will-change:transform}
+.leaf.cv{inset:calc(var(--u)*-1.6) calc(var(--u)*-1.8) calc(var(--u)*-1.6) 0}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:calc(var(--u)*.4) calc(var(--u)*1.4) calc(var(--u)*1.4) calc(var(--u)*.4)}
+.cv .face{border-radius:calc(var(--u)*.5) calc(var(--u)*2) calc(var(--u)*2) calc(var(--u)*.5)}
+.back{transform:rotateY(180deg);border-radius:calc(var(--u)*1.4) calc(var(--u)*.4) calc(var(--u)*.4) calc(var(--u)*1.4)}
+.cv .back{border-radius:calc(var(--u)*2) calc(var(--u)*.5) calc(var(--u)*.5) calc(var(--u)*2)}
+.sh{position:absolute;inset:0;z-index:7;pointer-events:none;opacity:0;border-radius:inherit;will-change:opacity;background:linear-gradient(90deg,rgba(50,25,15,.6),rgba(50,25,15,.12))}
+.back .sh{background:linear-gradient(270deg,rgba(50,25,15,.6),rgba(50,25,15,.12))}
+/* leather cover */
+.leather{background:var(--noise),linear-gradient(90deg,rgba(0,0,0,.55) 0,rgba(0,0,0,.2) 2.4%,rgba(0,0,0,.26) 6.4%,transparent 14%),radial-gradient(ellipse at 38% 26%,#86233b 0%,var(--wine) 50%,var(--wine2) 100%)}
+#wrap.end .leather.back{background:var(--noise),linear-gradient(270deg,rgba(0,0,0,.55) 0,rgba(0,0,0,.2) 2.4%,rgba(0,0,0,.26) 6.4%,transparent 14%),radial-gradient(ellipse at 62% 26%,#86233b 0%,var(--wine) 50%,var(--wine2) 100%)}
+.cv .face{box-shadow:0 calc(var(--u)*2.2) calc(var(--u)*4) calc(var(--u)*-1) rgba(40,10,20,.45),0 calc(var(--u)*6) calc(var(--u)*12) rgba(40,10,20,.2)}
+.frame.bk{inset:calc(var(--u)*7)}
+.frame{position:absolute;inset:calc(var(--u)*7);border:calc(var(--u)*.4) solid rgba(214,172,80,.95);border-radius:calc(var(--u)*1);box-shadow:0 0 calc(var(--u)*.6) rgba(0,0,0,.4)}
+.frame::before{content:"";position:absolute;inset:calc(var(--u)*1.4);border:calc(var(--u)*.2) solid rgba(214,172,80,.65);border-radius:calc(var(--u)*.5)}
+.frame::after{content:"";position:absolute;inset:calc(var(--u)*3);border:calc(var(--u)*.3) dashed rgba(214,172,80,.38);border-radius:calc(var(--u)*.4)}
+.dia{position:absolute;width:calc(var(--u)*2.2);height:calc(var(--u)*2.2);background:var(--goldfx);transform:rotate(45deg)}
+.dia:nth-child(1){left:calc(var(--u)*-1.1);top:calc(var(--u)*-1.1)}.dia:nth-child(2){right:calc(var(--u)*-1.1);top:calc(var(--u)*-1.1)}.dia:nth-child(3){left:calc(var(--u)*-1.1);bottom:calc(var(--u)*-1.1)}.dia:nth-child(4){right:calc(var(--u)*-1.1);bottom:calc(var(--u)*-1.1)}
+.ctitle{position:absolute;inset:calc(var(--u)*13) calc(var(--u)*12);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--u)*4.8);text-align:center;z-index:2;text-rendering:geometricPrecision}
+.gold{position:relative;background:var(--goldfx);background-size:230% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:foil 6s ease-in-out infinite}
+body:not(.shown) .gold{animation-play-state:paused}
+#wrap.open .gold{animation-play-state:paused}
+.gold::before{content:attr(data-t);position:absolute;inset:0;z-index:-1;padding:inherit;background:none;animation:none;-webkit-text-fill-color:rgba(20,2,8,.55);color:rgba(20,2,8,.55);transform:translateY(calc(var(--u)*.45))}
+@keyframes foil{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+.heart{width:calc(var(--u)*9);height:calc(var(--u)*9);fill:url(#gg)}
+.what{font-family:var(--cinzel);font-weight:700;font-size:calc(var(--u)*6);letter-spacing:calc(var(--u)*1.7);padding-left:calc(var(--u)*1.7)}
+.anvi{font-family:var(--serif);font-weight:500;font-size:calc(var(--u)*33);line-height:1.1;letter-spacing:calc(var(--u)*.4);padding:0 calc(var(--u)*2) 0 calc(var(--u)*2.4)}
+.mrow{display:flex;align-items:center;gap:calc(var(--u)*2.4)}
+.rl{width:calc(var(--u)*8);height:calc(var(--u)*.35);background:var(--goldfx)}
+.means{font-family:var(--cinzel);font-weight:700;font-size:calc(var(--u)*4.6);letter-spacing:calc(var(--u)*1.3);padding-left:calc(var(--u)*1.3)}
+.piyu{font-family:var(--serif);font-style:normal;font-weight:500;font-size:calc(var(--u)*15);line-height:1.2;letter-spacing:calc(var(--u)*.4);padding:0 0 0 calc(var(--u)*.4)}
+.line{position:relative;width:calc(var(--u)*34);height:calc(var(--u)*.35);background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.line::after{content:"";position:absolute;left:50%;top:50%;width:calc(var(--u)*1.8);height:calc(var(--u)*1.8);background:var(--goldfx);transform:translate(-50%,-50%) rotate(45deg)}
+.endnote{position:absolute;inset:calc(var(--u)*13) calc(var(--u)*12);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--u)*4.4);text-align:center;z-index:2}
+.endnote .e1{font-family:var(--cinzel);font-weight:700;font-size:calc(var(--u)*5.2);letter-spacing:calc(var(--u)*1.5);padding-left:calc(var(--u)*1.5)}
+.endnote .e2{font-family:var(--serif);font-weight:500;font-size:calc(var(--u)*10.4);line-height:1.2;letter-spacing:calc(var(--u)*.3);padding:0 calc(var(--u)*.3);white-space:nowrap}
+.endnote .line{margin:calc(var(--u)*.6) 0}
+/* paper */
+.page{background:linear-gradient(90deg,rgba(70,40,20,.34) 0,rgba(70,40,20,.1) 3%,transparent 13%),linear-gradient(90deg,#eadfc3 0,var(--paper) 8%,#faf4e5 60%,#efe4cc 100%);padding:calc(var(--u)*9.5) calc(var(--u)*9) calc(var(--u)*12) calc(var(--u)*13);display:flex;flex-direction:column;justify-content:flex-start;text-align:center}
+.page.back{background:linear-gradient(270deg,rgba(70,40,20,.34) 0,rgba(70,40,20,.1) 3%,transparent 13%),linear-gradient(270deg,#eadfc3 0,var(--paper) 8%,#faf4e5 60%,#efe4cc 100%);padding:calc(var(--u)*12) calc(var(--u)*15) calc(var(--u)*12) calc(var(--u)*11)}
+.page::before{content:"";position:absolute;inset:calc(var(--u)*5) calc(var(--u)*5) calc(var(--u)*8) calc(var(--u)*9);border:calc(var(--u)*.22) solid rgba(184,137,31,.55);border-radius:calc(var(--u)*.6);pointer-events:none}
+.page.back::before{inset:calc(var(--u)*5) calc(var(--u)*9) calc(var(--u)*8) calc(var(--u)*5)}
+.in{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;width:100%;flex:none}
+.lbl{font-family:var(--caps);font-size:calc(var(--u)*3);letter-spacing:calc(var(--u)*1);padding-left:calc(var(--u)*1);color:var(--goldd);margin-bottom:calc(var(--u)*2.4)}
+.page h2{font-family:var(--serif);font-weight:700;font-style:normal;font-size:calc(var(--u)*6.4);line-height:1.14;letter-spacing:.01em;text-wrap:balance;padding:.12em calc(var(--u)*1) .3em;margin:-.12em 0 -.3em;color:var(--accent);background:linear-gradient(180deg,#a02342,#5a1124);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.orn{display:flex;align-items:center;gap:calc(var(--u)*2);margin:calc(var(--u)*1.8) 0 calc(var(--u)*3)}
+.orn::before,.orn::after{content:"";width:calc(var(--u)*11);height:calc(var(--u)*.25);background:linear-gradient(90deg,transparent,#b8891f)}
+.orn::after{transform:scaleX(-1)}
+.orn svg{width:calc(var(--u)*3.4);height:calc(var(--u)*3.4);fill:#b8891f}
+.page p{font-family:var(--body);font-size:calc(var(--u)*var(--fs,2.6));line-height:var(--lh,1.45);width:100%;color:var(--ink);text-align:left;word-spacing:.04em;hyphens:manual;text-wrap:pretty}
+.sig{font-family:var(--script);font-size:calc(var(--u)*13);color:var(--accent);margin-top:calc(var(--u)*5);line-height:1.2}
+.no{position:absolute;bottom:calc(var(--u)*1.7);left:calc(var(--u)*9);right:calc(var(--u)*5);text-align:center;font-family:var(--caps);font-style:normal;font-size:calc(var(--u)*3.8);line-height:1.2;letter-spacing:.04em;color:#7a5a14;z-index:2}
+.blank .in{opacity:.5}.blank .orn{margin:0}.blank .orn::before,.blank .orn::after{display:none}.blank .orn svg{width:calc(var(--u)*9);height:calc(var(--u)*9);fill:#c9a24a}
+/* gate */
+#gate{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;gap:5dvh;align-items:center;justify-content:center;background:transparent;transition:opacity 1.4s ease .1s,visibility 1.6s}
+#gate.hide{opacity:0;visibility:hidden;pointer-events:none;display:none}
+#gate{gap:clamp(14px,3.2dvh,30px);padding:0 7vw;text-align:center}
+#gc{display:flex;flex-direction:column;align-items:center;gap:clamp(16px,3.6dvh,34px);position:relative;z-index:2;will-change:opacity,transform;transition:opacity 1.5s cubic-bezier(.45,.05,.25,1),transform 1.5s cubic-bezier(.45,.05,.25,1)}
+#gate.go #gc{opacity:0;transform:scale(1.02);pointer-events:none}
+#gate.go #enter{animation:none;opacity:1}
+.cp{position:absolute;top:0;bottom:0;width:calc(50% + 1px);background:#fff;z-index:1;will-change:transform;transition:transform 1.5s cubic-bezier(.65,0,.35,1) .15s}
+.cp.l{left:0}.cp.r{right:0}
+.cp::before,.cp::after{content:"";position:absolute;top:0;bottom:0;opacity:0;transition:opacity .25s ease;pointer-events:none}
+.cp.l::before{inset:0;background:linear-gradient(90deg,transparent 70%,rgba(201,162,74,.16))}
+.cp.r::before{inset:0;background:linear-gradient(270deg,transparent 70%,rgba(201,162,74,.16))}
+.cp::after{width:2px;background:linear-gradient(180deg,transparent,#c9a24a 16%,#f6e27a 50%,#c9a24a 84%,transparent)}
+.cp.l::after{right:0;box-shadow:10px 0 30px rgba(90,17,36,.16)}.cp.r::after{left:0;box-shadow:-10px 0 30px rgba(90,17,36,.16)}
+#gate.open .cp::before,#gate.open .cp::after{opacity:1}
+#gate.open .cp.l{transform:translateX(-100%)}
+#gate.open .cp.r{transform:translateX(100%)}
+/* golden line borders (from v20) - fade with the text, curtains untouched */
+.frm{--m:clamp(10px,3.4vw,18px);--mt:calc(var(--m) + env(safe-area-inset-top,0px));--mb:calc(var(--m) + env(safe-area-inset-bottom,0px));position:absolute;inset:0;z-index:2;pointer-events:none;transition:opacity 1.5s cubic-bezier(.45,.05,.25,1)}
+#gate.go .frm{opacity:0}
+.fr{position:absolute;z-index:4;pointer-events:none;padding:2px;border-radius:7px;background:var(--goldfx);
+-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
+.f1{inset:var(--mt) var(--m) var(--mb)}
+.f2{inset:calc(var(--mt) + 8px) calc(var(--m) + 8px) calc(var(--mb) + 8px);padding:1px;border-radius:4px;opacity:.85}
+.f3{position:absolute;z-index:4;pointer-events:none;inset:calc(var(--mt) + 15px) calc(var(--m) + 15px) calc(var(--mb) + 15px);border:1px dashed rgba(184,137,31,.5);border-radius:3px}
+.fc{position:absolute;z-index:5;pointer-events:none;inset:var(--mt) var(--m) var(--mb)}
+.fc i{position:absolute;width:10px;height:10px;background:var(--goldfx);transform:rotate(45deg);box-shadow:0 0 0 1px rgba(90,17,36,.55)}
+.fc i:nth-child(1){left:-4px;top:-4px}.fc i:nth-child(2){right:-4px;top:-4px}.fc i:nth-child(3){left:-4px;bottom:-4px}.fc i:nth-child(4){right:-4px;bottom:-4px}
+.gb{display:flex;flex-direction:column;align-items:center;gap:.8em;text-align:center}
+.gb small,.gb h1{opacity:0;animation:rev 1s cubic-bezier(.2,.7,.2,1) forwards}
+.gq small{animation-delay:.1s}.gq h1{animation-delay:.3s}.ga small{animation-delay:1.1s}.ga h1{animation-delay:1.3s}
+.gb small{display:flex;align-items:center;gap:12px;font-family:var(--cinzel);font-weight:700;font-size:clamp(11px,3vw,14px);letter-spacing:.34em;padding-left:.34em;text-transform:uppercase;color:#8f6a14}
+.gb small::before,.gb small::after{content:"";width:clamp(18px,7vw,40px);height:1px;background:linear-gradient(90deg,transparent,#b8891f)}
+.gb small::after{transform:scaleX(-1)}
+.gb h1{font-family:var(--sf);font-weight:600;white-space:nowrap;max-width:none;text-align:center;font-size:clamp(12px,4.6vw,34px);line-height:1.3;letter-spacing:-.012em}
+.gq h1{color:#000}
+.ga h1{color:#1d4ed8}
+.gd{display:flex;align-items:center;gap:12px;opacity:0;animation:fade .8s .9s forwards}
+.gd span{width:clamp(34px,13vw,84px);height:1px;background:linear-gradient(90deg,transparent,#b8891f)}
+.gd span:last-child{transform:scaleX(-1)}
+.gh{width:clamp(16px,4.4vw,22px);height:clamp(16px,4.4vw,22px);fill:var(--gold)}
+#enter{font-family:var(--cinzel);font-weight:700;font-size:15px;letter-spacing:.24em;text-indent:.24em;text-transform:uppercase;margin-top:clamp(4px,1.2dvh,12px);padding:.95em 2.6em;color:#fff;background:var(--wine);border:0;border-radius:999px;cursor:pointer;opacity:0;box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--gold),0 10px 22px rgba(90,17,36,.26);animation:fade 1s 1.5s forwards,glow 3.2s 2.7s ease-in-out infinite;transition:background .3s,transform .2s}
+#enter:hover,#enter:focus-visible{background:#7a1830;outline:none}
+#enter:active{transform:scale(.97)}
+@keyframes fade{to{opacity:1}}
+@keyframes rev{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--gold),0 10px 22px rgba(90,17,36,.26)}50%{box-shadow:0 0 0 3px #fff,0 0 0 4.5px var(--gold),0 0 30px 6px rgba(90,17,36,.28)}}
+@media (prefers-reduced-motion:reduce){.gold{animation:none}}
+</style>
+</head>
+<body>
+<div id="bgfill"></div>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a6a1f"/><stop offset=".35" stop-color="#f6e27a"/><stop offset=".6" stop-color="#b8891f"/><stop offset="1" stop-color="#fff1a8"/></linearGradient><symbol id="h" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2 0 3.5 1.1 5.3 3 1.8-1.9 3.3-3 5.3-3 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z"/></symbol></defs></svg>
+<div id="gate">
+ <div class="cp l"></div><div class="cp r"></div>
+ <div class="frm"><div class="fr f1"></div><div class="fr f2"></div><div class="f3"></div><div class="fc"><i></i><i></i><i></i><i></i></div></div>
+ <div id="gc">
+  <div class="gb gq"><small>Anvisha</small><h1>What Does Piyushii Consider Me?</h1></div>
+  <div class="gd"><span></span><svg class="gh"><use href="#h"/></svg><span></span></div>
+  <div class="gb ga"><small>Piyushii</small><h1>This Is What I Consider My Anvi</h1></div>
+  <button id="enter">Answer</button>
+ </div>
+</div>
+<div id="stage">
+ <div id="hint"><span id="ht"></span></div>
+ <div id="scene"><div id="wrap">
+    <div class="leaf cv">
+   <div class="face leather">
+    <div class="frame"><span class="dia"></span><span class="dia"></span><span class="dia"></span><span class="dia"></span></div>
+    <div class="ctitle">
+     <svg class="heart"><use href="#h"/></svg>
+     <div class="what gold" data-t="WHAT">WHAT</div><div class="piyu gold" data-t="Piyushii">Piyushii</div><div class="mrow"><span class="rl"></span><div class="means gold" data-t="CONSIDERS">CONSIDERS</div><span class="rl"></span></div><div class="anvi gold" data-t="Anvi">Anvi</div><div class="line"></div>
+    </div>
+    <div class="sh"></div>
+   </div>
+   <div class="face back leather"><div class="sh"></div></div>
+  </div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>More Than Words Can Explain</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvisha aapne mujhse ye pucha tha na Anvi ko Piyushii kya consider karta tha toh honestly iska answer hai karta tha nhi abhi bhi karta hai Anvi Piyushii ke liye ek aisi person hai jo Piyushii ki life mein bahut khaas hai Anvi woh person hai jisse Piyushii apni chhoti se chhoti baat share karta hai jiske saath Piyushii bina soche apne dil ki baatein keh sakta hai aur jisse baat karke Piyushii ko ek alag sa apnapan feel hota hai Aapke saath Piyushii ka connection sirf baat karne tak limited nahi hai balki usmein ek aisa comfort hai jo har kisi ke saath feel nahi hota Anvi Piyushii ke liye sirf ek friend nahi usse bhi zyada hai ek aisi person jise Piyushii apna maanta hai jiske saath Piyushii apni life ke moments share karna chahta hai aur jiski presence Piyushii ke liye genuinely matter karti hai Shayad Piyushii ke paas words bhi kam pad jayenge ye batane ke liye ki Piyushii apni Anvi ko kya maanta hai because some people are not easy to define with just one word and for Piyushii Anvi is one of those people Aur ye sab sirf pehle ki baat nahi hai Piyushii aaj bhi aapko apni life mein utna hi important maanta hai aur hamesha aap Piyushii ki life mein khaas rahoge.</p></div><div class="no">1</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>The Little World We Shared</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii ke liye aapke saath baat karna sirf time pass karna nhi hai because somewhere those conversations became a little world of their own jahan normal si baatein bhi special lagti hain kabhi koi random topic kabhi koi silly si baat aur kabhi aisi conversations jinhe baad mein yaad karke bhi smile aa jaaye Piyushii ko shayad har moment ki exact detail yaad na ho but Piyushii remembers how those moments made Piyushii feel aur woh moments aaj bhi Piyushii ke dil mein waise hi zinda hain aur kabhi kabhi kisi person ki importance uski kahi hui baaton se zyada us feeling mein hoti hai jo woh apne saath chhod jaata hai Hum dono ki conversations meri life ka ek aisa part ban gayi hain jo hamesha aise hi chalta rahe ye Piyushii chahta tha aur aaj bhi chahta hai because Piyushii felt truly comfortable having you around and sharing those little pieces of Piyushii's day with you aur wohi little world Piyushii ke liye aaj bhi bahut khaas hai.</p></div><div class="no">2</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>Even When I Knew Things Could Change</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Piyushii jaanta tha ki aapki life mein circumstances change ho sakte hain aapki priorities badal sakti hain aapki feelings bhi change ho sakti hain aur ho sakta hai ek waqt ke baad hum dono pehle ki tarah baat bhi na kar paayein but knowing that things could change never made Piyushii want to care about you any less Piyushii ne aapke saath bond isliye nhi banaya tha ki Piyushii ko guarantee thi everything would stay the same forever balki Piyushii ne aapko importance isliye di because what Piyushii felt in that moment was sincere Piyushii jaanta hai ki future kisi ke control mein nhi hota but Piyushii still wanted to make the most of the connection Piyushii had with you Kyunki kisi cheez ke matter karne ke liye uska permanent hona zaroori nhi hota aur Piyushii ke liye aapke saath woh connection precious hai chahe aage chal kar cheezein badal bhi jaayein.</p></div><div class="no">3</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>Because You Were Worth Staying For</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi jab Piyushii ne aapke saath rehne aur bond ko sambhalne ki koshish ki thi toh woh kisi obligation ki wajah se nhi thi Piyushii stayed because you mattered to Piyushii and because Piyushii believed the connection was worth making an effort for Jab situations difficult ho gayi ya hum dono ke beech things felt different tab bhi Piyushii ke liye aapki importance achanak se kam nhi hui thi because real care doesn't always disappear the moment something becomes complicated Piyushii chahta tha ki hum dono ek doosre ko samajhne ki koshish karein aur agar koi problem aaye toh usse milkar handle karein instead of letting the connection slowly become something neither of us understood Piyushii ne apni taraf se bond ko sambhal ke rakha because Piyushii wanted to protect something precious and that effort came from Piyushii's own heart Aur Anvi Piyushii ki feelings aapke liye kabhi change nhi ho sakti chahe hum kitne bhi time baat na karein chahe kitne din mahine ya saal beet jaayein because what Piyushii feels for you was never something that depended on how often we talk aur wo feelings aaj bhi waisi hi hain aur hamesha waisi hi rahengi.</p></div><div class="no">4</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>The Moments My Heart Kept</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi kuch moments aise hote hain jo us waqt bilkul normal lagte hain but later we realize that those were the moments we remember the most Piyushii ke liye aapke saath ki chhoti chhoti conversations bhi kuch aisi hi thi Piyushii har baar koi extraordinary baat hone ka wait nhi karta tha because sometimes just talking to someone you care about is enough to make an ordinary day feel better Aapki random baatein aapka baat karne ka tareeka aapka mood aur woh little moments jahan hum dono naturally connect kar paate the all of these became part of Piyushii's heart Piyushii ko aapki baatein sirf sunna nhi balki unhe samajhna bhi important lagta hai aur aapko kabhi judge kiye bina aapki feelings ko samajhne ki koshish karna Piyushii ke liye natural hai Aur shayad isi liye jab connection pehle jaisa nhi raha toh Piyushii ko sirf conversations ki kami nhi lagi Piyushii also felt the absence of the comfort and familiarity that had once made those conversations special aur wo comfort aaj bhi Piyushii ke dil mein waisa hi hai.</p></div><div class="no">5</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>I Never Asked You to Be Perfect</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii ne aapko kabhi perfect samajh kar nhi chaha tha because Piyushii always understood that every person has their own flaws habits and difficult sides aapki acchi qualities ke saath aapki imperfections bhi aapka part hain aur Piyushii ke liye kisi ko sincerely care karne ka matlab ye nhi hota ki usse har cheez mein perfect hona pade Piyushii wanted to understand you as a person with your own nature your own pace and all the little things that made you who you are and Piyushii genuinely likes all of it Piyushii jaanta hai ki har insaan se mistakes hoti hain aur Piyushii ne aapki imperfections ko bhi dil se accept kiya tha Piyushii ne aapse kabhi shikayat nhi ki bas itna chaha ki jo bhi connection tha wo sacchai se jiya jaaye aur Piyushii aaj bhi aapko waise hi accept karta hai jaise aap ho.</p></div><div class="no">6</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>The Future I Quietly Hoped For</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii ne aapke saath future ke baare mein har baar openly baat nhi ki but somewhere Piyushii imagined that there would be more conversations more memories and more moments to share Aisi chhoti chhoti wishes hoti hain na jo hum kisi ko bina bataye apne mind mein rakh lete hain Piyushii ke liye bhi aapke saath bond ko continue karna kuch aisa hi tha Piyushii wanted to see how the connection would grow with time and how much more we both could learn about each other Piyushii ye nhi sochta tha ki har din perfect hoga ya kabhi disagreements nhi honge but Piyushii hoped that even when things became difficult we would both still want to understand each other Aur Piyushii ki wish kabhi ye nhi thi ki aap apni life Piyushii ke hisaab se badal do Piyushii simply hoped that there would always be a place for the connection we both share aur ye hope Piyushii ke dil mein aaj bhi hai.</p></div><div class="no">7</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>My Feelings Were Never a Game</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii ke liye aapki importance koi temporary excitement ya passing phase nhi hai because the way Piyushii cared about you came from an honest place Piyushii ne aapko attention pane ke liye ya sirf kuch time ke liye close feel karne ke liye aapko special nhi maana tha Piyushii deeply values the connection and wants to treat it with care Piyushii ne jab aapki baatein suni aapke saath apni baatein share ki aur aapko apni life mein ek special place di toh Piyushii ne wo sab dil se kaha aur kiya tha Aur jab bhi Piyushii aapko Chashmish Anvi bulata hai uske peeche bhi woh familiarity aur affection hai jo Piyushii aapke saath aaj bhi feel karta hai Piyushii aaj bhi apni feelings ko utni hi sincerity se feel karta hai because real feelings don't need a reason to stay.</p></div><div class="no">8</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>I Would Never Regret Knowing You</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi agar aap Piyushii se poochho ki kya Piyushii regrets knowing you toh uska answer no hi hoga because meeting you was one of the best things that happened to Piyushii Aapke saath jo acche moments the jo happiness mili aur jo memories bani un sabki apni value hai even if life eventually takes people in different directions Piyushii ye nhi kahega ki Piyushii ko aapki care nhi karni chahiye thi ya Piyushii ko aapko kabhi khaas nhi maanna chahiye tha because that would mean denying a part of Piyushii's own story Piyushii ne jo feel kiya woh us waqt real tha aur Piyushii us sacchai ko sirf isliye galat nhi kahega ki things may not remain the same forever Piyushii can accept that things look different now while still being grateful for everything Anvi has been to Piyushii aur aap Piyushii ke liye aaj bhi utne hi important ho</p></div><div class="no">9</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>What Anvi Means to Piyushii</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Toh Anvi aap Piyushii ki life mein kya ho iska answer ye hai ki you are someone Piyushii cares about deeply someone Piyushii chose to trust and someone whose presence became a comfort to Piyushii Aap Piyushii ki routine ka hissa hone se kahin zyada ho you are a person with whom Piyushii shared a particular kind of comfort and emotional connection jise Piyushii hamesha apni life mein dekhna chahta tha aur aaj bhi chahta hai Piyushii ke liye aapki importance is baat se decide nhi hoti ki hum dono aaj kitni baat karte hain ya kal kya hoga because your place in Piyushii's heart comes from what Piyushii actually experienced with you Piyushii cannot define everything with one perfect sentence but Piyushii can tell you this much ki aap Piyushii ke liye ordinary nhi ho aur na kabhi hogi and the care Piyushii has for you is real and always will be</p></div><div class="no">10</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>A Place That Will Always Be Special</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii ye nhi keh raha ke aapko Piyushii ki life mein hamesha usi tarah rehna zaroori hai ya Piyushii ke saath apna bond waise hi rakhna padega because Piyushii understands that every person has the right to make their own choices but that doesn't mean Piyushii has to act as if those days never happened aapki ek khaas jagah Piyushii ke heart mein hai aur woh jagah us waqt ki feelings aur experiences se bani hai Piyushii aapki respect karta hai aur chahta hai ki aap hamesha khush raho even if our lives eventually become different from what Piyushii once imagined Piyushii doesn't need to hold you close every day to acknowledge that you are close to Piyushii's heart because some people remain important to us even when life takes them in a different direction</p></div><div class="no">11</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>Some People Stay Within Us</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi life mein har person hamesha humare saath nhi rehta and sometimes the people who once felt closest to us slowly become people we remember from a different chapter of our lives Piyushii ye baat samajhta hai ki circumstances change hote hain waqt badalta hai aur kabhi kabhi two people who once understood each other very well can begin to feel distant but distance doesn't automatically erase the value of what came before because memories are not valuable only when they lead to a permanent relationship Aap Piyushii ki story ka ek bahut khaas hissa ho and Piyushii can acknowledge that without asking you to remain the same person forever Piyushii doesn't want to force the past to repeat itself Piyushii simply wants to remember it honestly because accepting change and valuing what we had can exist together without contradicting each other aur aap Piyushii ke dil mein aaj bhi waise hi ho</p></div><div class="no">12</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>My Chashmish Anvi</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii aapke baare mein ek poori book likh sakta hai because there are so many little things attached to the way Piyushii remembers you aapki baatein aapka nature aapke saath share ki hui feelings aur woh comfort jo Piyushii ne aapke saath experience kiya tha and when you once asked Piyushii to describe you maybe Piyushii couldn't explain everything properly because some people are difficult to describe when their importance comes from so many different moments Piyushii ke liye aap sirf aapke naam ya appearance tak limited nhi ho Piyushii ne aapko aapki conversations aur hamare connection ke through jaana hai Isiliye Chashmish Anvi Piyushii ke liye ek aisa naam hai jisme aapki poori presence samayi hai and Piyushii believes that somewhere you understand why that name felt different when Piyushii said it</p></div><div class="no">13</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>The Difference My Heart Felt</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi jab aapne Piyushii se kaha ki ab pehle jaisi closeness nhi rahi tab Piyushii ke paas us waqt kehne ke liye words nhi the because when someone you have shared so much of your inner world with tells you that it feels different it can be difficult to put your own feelings into words Piyushii ne aapki baat suni aur use samajhne ki koshish ki bina kisi ko blame kiye because Piyushii ne aapki habits aur flaws ko bhi kabhi problem nhi banaya aur hamesha aapko ek real person ki tarah accept kiya Aapne jo feel kiya wo aapka sach tha aur Piyushii us sach ki respect karta hai but Piyushii ki feelings Chashmish Anvi ke liye na kam hui na badli woh aaj bhi wahi hain aur hamesha wahi rahengi because woh jhoothi nhi hain woh sacchi hain</p></div><div class="no">14</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>A Bond Needs Two Hearts</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii maanta hai ki Piyushii apni taraf se kisi bond ko sambhalne ke liye efforts kar sakta hai Piyushii can communicate care understand and try to solve problems when they arise but Piyushii also understands that a lasting connection cannot be maintained by one person alone Agar sirf ek insaan har baar conversation start kare har baar misunderstanding solve kare aur har baar connection ko bachane ki koshish kare toh eventually that person may begin to feel emotionally tired Piyushii ye nhi chahta ki aap Piyushii ke liye woh efforts karo jo aapko dil se na lage because forced effort cannot create the same comfort as something that comes naturally Piyushii bas itna chahta hai ki agar hum dono ke liye ye bond important hai toh both of us would be willing to protect it in our own ways because a relationship feels most complete when neither person has to carry the entire weight of keeping it alive aur Piyushii kisi se koi shikayat nhi rakhta.</p></div><div class="no">15</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>I Would Rather Plant Than Pick Flowers</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii ne aapko plants aur flowers ka example isliye diya tha because Piyushii finds something beautiful about growing plants rather than simply plucking flowers Umm aapko pata hi hai flower todne par woh kuch waqt tak beautiful zaroor dikhta hai but slowly it begins to lose its freshness whereas plants can continue growing when they receive care time and attention Piyushii relationships ko bhi kuch aise hi dekhta hai Piyushii doesn't want a connection that looks beautiful only for a short time but one that both people sincerely want to nurture Piyushii bas itna chahta hai ki hum dono ek doosre ko waqt dein aur bond ko apni raftaar se grow karne dein because the most valuable things in life are not always the things we can hold tightly in our hands sometimes the beauty lies in giving something the space it needs to grow naturally without trying to control every part of its journey aur isi soch ki wajah se Piyushii ne is bond ko hamesha pyaar aur sabr ke saath dekha hai.</p></div><div class="no">16</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>You Will Always Be Part of My Story</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi thank you for being a part of Piyushii's life and for all the moments that became so meaningful because you were there Aapke saath jo acche moments share hue unke liye Piyushii grateful hai and Piyushii doesn't want to turn those moments into something painful simply because things may look different now Piyushii aapke chhote chhote gestures ko bhi yaad rakhta hai because even the smallest kindness can leave a lasting impression on the heart Piyushii aapko apne saath rehne ke liye force nhi karega aur na hi aapse ye expect karega ki aap hamesha apne pehle wale version ki tarah raho Piyushii simply hopes that when you look back at the connection we share you remember that Piyushii cares about you from the heart Piyushii ki story aage bhi badhegi aur aapki bhi but the moments we shared will remain a part of what made both of our journeys what they are today aur Piyushii ke liye itna kaafi hai ki ye moments kabhi hamare beech the.</p></div><div class="no">17</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>More Than Someone I Used to Know</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi aap Piyushii ke liye sirf ek aisi person nhi ho jisse Piyushii bas baat karta hai because somewhere along the way you became someone Piyushii truly cares about a person whose presence made even tiring days feel a little lighter aur jiske saath thodi der ki baat bhi Piyushii ke poore din ko halka bana deti hai Piyushii ne aapko sirf apne free time ka part nhi maana Piyushii gave you a place in Piyushii's thoughts Piyushii's heart and the little things Piyushii wanted to share with someone special aur shayad isi wajah se aapke saath Piyushii ka bond Piyushii ke liye itna special hai Piyushii never needed every moment to be unforgettable because even the simplest conversations meant something to Piyushii Aap Piyushii ki poori duniya nhi ho but you are definitely a precious part of the world I'm building inside my heart.</p></div><div class="no">18</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>The Meaning Behind My Chashmish Anvi</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi jab Piyushii aapko apni Chashmish ya Anvi kehta hai toh Piyushii ke liye woh sirf cute se nicknames nhi hain because some names slowly become attached to feelings and moments without us even realizing it Us naam ke saath Piyushii ki woh conversations judi hain jahan Piyushii apni baatein share karta hai woh moments jude hain jahan aapke saath Piyushii ko ek alag sa comfort feel hota hai aur woh feeling judi hai ki there is someone with whom I can be myself without having to explain every little thing Aapke liye shayad Chashmish ya Anvi ek naam ho but Piyushii ke liye it carries a whole collection of emotions jo Piyushii har kisi ke saath feel nhi karta Aur isi liye aaj bhi woh naam Piyushii ko us feeling ki yaad dilata hai and that doesn't mean the meaning behind that name ever faded because a true connection doesn't become fake just because things eventually change.</p></div><div class="no">19</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>I Wanted to Grow Something Beautiful With You</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii aapko kabhi ek short-term feeling ki tarah apni life mein nhi chahta Piyushii wants something that can grow naturally with time something where both of us can simply be ourselves without pretending or performing Piyushii ke liye bond ka matlab sirf daily baatein karna ya ek doosre ko miss karna nhi hai it is also about understanding each other respecting each other's feelings and making small efforts even when life gets busy ya situations thodi difficult ho jaayein Piyushii chahta hai ki hum dono ka connection waqt ke saath aur strong bane not because either of us is forced to stay but because both of us really want to be there for each other Aur Piyushii ki sabse badi hope bas itni hai ki jab bhi hum dono is connection ke baare mein sochein toh sirf comfort aur apnapan yaad aaye.</p></div><div class="no">20</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>I Never Wanted to Keep You by Force</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii ko ab is baat ka regret ya guilt nhi hai ki Piyushii ne aapko apni life mein rehne ke liye force nhi kiya because Piyushii never believes that someone's presence should come at the cost of their freedom Piyushii ne aapko apni feelings batayi apni taraf se efforts kiye aur jitna Piyushii ko sahi laga utna is bond ko sambhalne ki koshish ki but Piyushii never wants to turn Piyushii's feelings into a reason for you to feel trapped Piyushii aapko rok sakta tha baar baar samjha sakta tha ya aapko ye feel karwa sakta tha ki Piyushii ke liye itna close hone ke baad aapko jaana nhi chahiye but what would that really mean if someone stays only because they feel guilty or responsible for another person's emotions Piyushii ko aapki presence zaroor chahiye but Piyushii wants it to come from your heart not from pressure because there is a difference between someone staying beside you and someone wholeheartedly wanting to stay with you Aur Piyushii ke liye woh difference hamesha important rahega.</p></div><div class="no">21</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>A Plant Needs More Than One Person's Care</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi aapko woh plants wala example yaad hoga na Piyushii ne usse sirf ek sundar si baat kehne ke liye nhi diya tha because Piyushii firmly believes that a bond is something we grow rather than something we simply possess Piyushii ko plants ko roz thoda thoda grow hote dekhna hamesha flowers todne se zyada pasand hai aur isi liye Piyushii wants to build something that can keep growing through changing days difficult conversations and different phases of life Lekin ek plant ko grow karne ke liye sirf ek baar paani dena kaafi nhi hota usse roz dhoop aur dekhbhaal bhi chahiye hoti hai and a bond also needs a little care from both sides to stay alive Piyushii apni taraf se care kar sakta tha samajhne ki koshish kar sakta tha aur bond ko protect kar sakta tha but Piyushii could never create feelings on behalf of both people because even the most sincere gardener cannot force a plant to bloom in a way that nature doesn't allow.</p></div><div class="no">22</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>I Will Never Regret Being Sincere</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii ko apni sincerity ka koi regret nhi hai because caring about you and showing it openly are never mistakes in Piyushii's eyes Piyushii ne aapke liye jo bhi feel kiya woh us waqt Piyushii ke dil ki sachchai thi and Piyushii doesn't want to look back at something sincere and call it a mistake just because it didn't turn out exactly the way Piyushii once hoped Piyushii ne jo bhi efforts kiye woh Piyushii ki apni choice thi aur Piyushii ne aapke saath future mein aur moments banane ke baare mein socha because Piyushii believes there is something worth holding on to Lekin ab agar cheezein pehle jaisi nhi rahi toh Piyushii apni sincerity ko blame nhi karta because not every beautiful feeling is meant to end in the way we imagine and not every meaningful connection is a failure just because it changes Piyushii apni feelings ko regret mein nhi badalta because I know I was sincere and that is something I will always respect about myself.</p></div><div class="no">23</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>You Are Someone I Chose Not Someone I Own</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Piyushii aapko apna maanta hai Anvi but Piyushii doesn't believe that calling someone yours gives you the right to control their choices feelings or future Piyushii ke liye aap ek aisi person ho jinki apni individuality hai apni happiness hai aur apne decisions lene ka poora haq hai Piyushii chahta hai ki aap Piyushii ki life mein raho but Piyushii also wants you to feel free enough to choose what is right for you because love and care should never become a cage jahan kisi ko sirf isliye rehna pade kyunki saamne wala usse jaane nhi dena chahta Piyushii ke liye aapki importance ka matlab ye nhi hai ki aapko hamesha Piyushii ki expectations ke according hi rehna hoga it means that Piyushii respects you enough to let you be your own person Aur ab agar aapki feelings badal gayi hain toh Piyushii aapko force karke un feelings ko wapas laane ki koshish nhi karega because Piyushii wants a connection that both of us can choose freely not a bond that survives only because one person feels unable to leave.</p></div><div class="no">24</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>My Care Is Not a Debt You Owe Me</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii ne aapki care ki aur aapko importance di aur apni taraf se efforts bhi kiye but Piyushii never wants those things to become a debt that you have to repay by staying in Piyushii's life because pure care should not come with hidden conditions Piyushii aapko ye nhi kehna chahta ki maine aapke liye itna kiya isliye aapko bhi mere liye utna hi karna padega because feelings are not transactions and affection is not something we should demand in return Piyushii chahta hai ki aap Piyushii ki efforts ko samjho unki sincerity ko feel karo aur agar aap bhi us connection ko important maanti ho toh apni marzi se usse sambhalne ki koshish karo but Piyushii understands that Piyushii cannot decide what you should feel just because I know what I feel myself Isliye Piyushii aapko guilt feel karwa kar apne paas nhi rakhna chahta and Piyushii doesn't want Piyushii's efforts to be remembered as a bill waiting to be paid because care that asks for something back stops being care.</p></div><div class="no">25</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>Some Flowers Are Beautiful Even When We Let Them Go</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Kuch phool sirf ek mausam ke liye khilte hain but unki khushboo yaad reh jaati hai because beauty is not measured by how long something lasts Anvi Piyushii aapko apni life mein rakhne ki wish karta hai and Piyushii truly hopes that the bond keeps growing but Piyushii knows that hope alone can't decide how the story ends Piyushii ne is bond se jo seekha woh hamesha Piyushii ke saath rahega Piyushii wants every day of that togetherness to feel light and chosen not heavy and forced Aur agar kabhi hum dono ke raaste alag ho jaayein toh iska matlab ye nhi hoga ki Piyushii ki care bekaar thi because the time Piyushii spent caring for that bond still has meaning even if it doesn't grow into the future Piyushii imagined Sometimes we can nurture something with all our heart and still learn that its journey is taking a different direction and accepting that reality doesn't mean we never cared.</p></div><div class="no">26</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>I Have No Guilt for Giving You a Choice</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii ko is baat ka guilt nhi hai ki Piyushii ne aapko apni marzi se decisions lene diye because Piyushii cares enough to let you choose what feels right for you Piyushii ye sab isliye nhi keh raha ki aapko jawab dena padega ya kuch badalna padega because this is simply what Piyushii feels and Piyushii wants it to be said honestly Piyushii ke liye aapka saath important hai but aapka sukoon aur aapki khushi bhi utni hi important hai Aur agar aapko kabhi apna raasta alag choose karna ho toh Piyushii chahta hai ki aap apni choice honestly kar sako Piyushii apni taraf se ki gayi sincerity ke liye guilty nhi feel karta because I know I tried to care without controlling I tried to stay without forcing and I tried to protect the bond without taking away your freedom.</p></div><div class="no">27</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>What Anvi Will Always Mean to Piyushii</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Aur agar aap Piyushii se poochho ki Anvi Piyushii ki life mein kya hai toh Piyushii bas itna kahega ki aap ek aisi person ho jiske saath bitaya hua waqt hamesha accha yaad rahega because some people become more than a name in our lives they become part of the way we remember certain moments and understand our own feelings Aap Piyushii ke liye ek special person ho aur hamesha rahogi jiske saath Piyushii ne apni life ke kuch memorable moments share kiye a person who stays in Piyushii's thoughts long after the conversations slowed down and someone whose place in Piyushii's memories cannot simply be erased by pretending that nothing ever mattered But Piyushii ko isse zyada ye baat important lagti hai ki aapki aage ki life mein sukoon aur acchi cheezein aayein</p></div><div class="no">28</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div><p>Isliye Piyushii aapko ek warm si yaad ki tarah apne saath rakhta hai Aapki importance ko maanne ke liye Piyushii ko kisi label ki zaroorat nhi hai aur aage badhne ke liye Piyushii ko un yaadon ko chhota karne ki bhi zaroorat nhi hai You matter to Piyushii and whenever you remember the name Chashmish Anvi Piyushii hopes it brings a small smile to your face because sometimes the most honest way to care about someone is to remember what they mean to you while still allowing both of us the freedom to grow beyond what we once were.</p></div><div class="no">29</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>I Knew This Day Could Come</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Piyushii ko hamesha se pata tha ki ek din aisa aa sakta hai because usne apni life mein yehi pattern dekha tha Starting mein log usse like karte hain uski baatein unhe achi lagti hain but dheere dheere sab kuch change hone lagta hai Kuch log bore ho jaate hain aur kuch ki priorities badal jaati hain and Piyushii wahin reh jaata hai jahan se sab start hua tha Isi wajah se usne khud se ek promise kiya tha ki ab wo kisi ko itni easily apne close nahi aane dega Usne decide kiya ki wo kisi ko apni zaroorat se zyada importance nahi dega taaki dobara hurt na ho aur agar iske liye usse heartless banna pade toh theek hai.</p></div><div class="no">30</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>And Then You Came</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Phir aap aayi Anvi aur pata hi nahi chala ki kab aap Piyushii ki daily life ka part ban gayi Aapse baat karna accha lagne laga chhoti chhoti baatein share karna accha lagne laga aur aapke message ka wait karna bhi Piyushii ne khud ko bahut samjhaya tha ki log badal jaate hain feelings change ho jaati hain but is baar uska heart apne mind ki sunne ko ready hi nahi tha Usne socha shayad ye person different hai shayad ye mujhe sach mein apna maanti hai Aur sabse painful baat ye thi ki wo actually ispe believe karne laga tha Jo Piyushii kisi ko apna banane se darta tha usne aapko apna maan liya.</p></div><div class="no">31</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>It Wasn't Only That You Changed</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Sach bolun toh Piyushii ko aapki feelings change hone se utna hurt nahi hua jitna aap shayad soch rahi ho Feelings kisi ke control mein nahi hoti aur aapko poora right hai ki jo feel karna chaho wahi karo Jo cheez usse andar se lagi wo ye thi ki jab sab kuch badal raha tha tab bhi wo khud ko convince kar raha tha ki Anvi alag hai Anvi aisa nahi karegi Uska heart believe kar raha tha lekin uska mind baar baar keh raha tha dekha maine kaha tha na Aur jab cheezein mushkil hui toh aisa laga jaise mind hi sahi tha shuru se aur wahi baat usse change se zyada hurt kar gayi.</p></div><div class="no">32</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>Your Side Too</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Piyushii ye bhi samajhta hai Anvi ki ho sakta hai aapko pata hi nahi tha ki wo itna wait kar raha hai ya shayad aapko samajh nahi aaya ki kya bolna chahiye Wo aapko villain nahi banana chahta because har insaan apne tareeke se situations handle karta hai Friendship Day wali baat ko bhi usne understand karne ki koshish ki thi but uske baad jab usse sach mein aapki zaroorat thi tab ek chhota sa effort uske liye kisi bhi special occasion se zyada matter karta Jo usne feel kiya wo bhi real tha aur wo chahta tha ki aap ye jaano bina kisi pressure ke.</p></div><div class="no">33</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>The Words He Remembered</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Ek din Piyushii ne aapse poocha tha ki agar Piyushii aapse naraz ho gaya toh aap kya karogi aur aapne kaha tha ki aap Piyushii ko manaogi Shayad aapne wo baat bina zyada soche keh di thi but Piyushii ke liye wo ek promise jaisi thi usne usse apne heart mein safe rakh liya tha Usne socha ki agar kabhi koi problem aayi toh aap kam se kam ek baar try zaroor karogi Phir ek din wo sach mein naraz hua aur usne aapko clearly bataya bhi Usne aapse koi badi cheez nahi maangi thi no apology no long message bas ek chhota sa effort jo usse ye feel karwa de ki aapko farq padta hai.</p></div><div class="no">34</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>Waiting Without Saying a Word</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Uske baad Piyushii ne wait kiya thoda zyada hi wait kiya Wo baar baar sochta tha ki shayad ab aapka message aayega shayad aap pooch loge ki kya hua Jab aisa nahi hua toh pehle usse apne upar hi doubt hone laga Kya maine zyada expect kar liya Kya jo baat mere liye itni badi thi wo aapke liye bas ek normal si baat thi Aur sabse ajeeb cheez ye thi ki wo naraz hokar bhi aapka intezaar kar raha tha because uska ek hissa abhi bhi chahta tha ki aap aao aur uske mind ko galat prove kar do.</p></div><div class="no">35</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>No Regrets Only Learning</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Piyushii ko aapke saath bitaye hue time ka koi regret nahi hai Wo moments real the aur wo unhe kabhi fake nahi bolega bas isliye ki ending uski expectation jaisi nahi thi Usne heart se care ki thi aur wo apne heart ko blame nahi karna chahta Bas ek cheez usne seekhi ki doosron ko itni care dete dete wo ye bhool gaya ki usse bhi utni hi care deserve hai Caring kabhi uski mistake nahi thi uski mistake ye thi ki wo bhool gaya ki wo bhi matter karta hai.</p></div><div class="no">36</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>I Am Not Asking for Anything</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi ye sab Piyushii ne aapko blame karne ke liye nahi likha aur na hi aapse kuch badalne ko keh raha hai Bas itna chahta tha ki aap ye jaano ki kabhi kabhi ek chhota sa effort kisi ke liye kitna bada meaning rakhta hai Agar kabhi aapko lage ki aap kuch kehna chahti ho toh Piyushii sunne ke liye yahin hai but wo ab sirf wait karte hue apne din nahi guzaarega kyunki ab usse khud ka khayal rakhna seekhna hai.</p></div><div class="no">37</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>Why Piyushii Shared His Book with Anvi</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvi Piyushii ne yeh book isliye nahi likhi thi ki ek din Piyushii aapko apne dil ki saari baatein dikhayega Piyushii wrote these notes only for himself because there were so many things Piyushii wanted to tell Anvi even when Anvi wasn't around Lekin jab Anvi ne Piyushii se poocha ki Piyushii Anvi ko kya consider karta tha aur Anvi ne khud hi soch liya ki Piyushii Anvi ko consider karta tha toh iss baat se Piyushii ko bohot hurt hua Piyushii ko believe hi nahi ho raha tha ki Piyushii ki Anvi ne Piyushii se yeh question poocha Umm Anvi ko toh pata hi hoga ki Piyushii ke heart mein Anvi ke liye kitni pure and genuine feelings hain phir bhi Anvi Piyushii ki feelings ko jaane bina unke baare mein aisa kaise soch sakti hai Anvi Piyushii ke liye bohot special hai someone who holds a unique place in Piyushii's heart Anvi Piyushii ke liye sirf ek friend nahi balki usse bhi zyada special hai someone Piyushii genuinely cares for and considers truly precious</p></div><div class="no">38</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div><p>Shayad isi liye Piyushii ko apni feelings samjhane ke liye woh sab dikhana pada jo Piyushii months se apne notes mein likhta aa raha hai You know what Anvi Piyushii never planned to show Anvi these Book but when Piyushii felt that Piyushii's feelings were being misunderstood Piyushii wanted Anvi to see what Piyushii could never fully explain in words Isliye Piyushii ne Anvi ko yeh book dikhayi not to make Anvi feel guilty but because Piyushii wanted Anvi to understand the feelings Piyushii could never fully put into words Piyushii just wanted Anvi to know that no matter how difficult it was for Piyushii to express everything these feelings were always genuine and came from the deepest corner of Piyushii's heart And every single page Piyushii wrote carries a little piece of what Anvi truly means to Piyushii Now just imagine how special Anvi must be to Piyushii someone he truly loves from the bottom of Piyushii's Heart.</p></div><div class="no">39</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf"><div class="face page"><div class="in"><h2>What Piyushii Truly Considers Anvi</h2><div class="orn"><svg><use href="#h"/></svg></div><p>Anvisha aapko ab bhi doubt hai kya ki Piyushii Anvi ko kya consider karta hai Because Piyushii apni Anvi ko yeh baat bohot baar bata chuka hai aur ab usse baar baar explain karne ki zarurat nahi hai ki Anvi uske liye kya hai aur kitna matter karti hai Phir bhi jab aapne dobara poocha toh Piyushii ko laga ki shayad yeh sawaal uski Anvi nahi balki Anvisha pooch rahi hai because his Anvi already knows Piyushii so well Piyushii ne uski Anvi ke liye poori book likhi hai toh usse padhkar aap andaza laga hi sakti ho ki aap uske liye kitni special ho and how much you truly mean to him Aapki feelings change ho sakti hain but Piyushii's feelings are still the same because Piyushii's intentions for Anvi come from a pure heart and a little distance or time apart can never change what Piyushii genuinely feels for Anvi.</p></div><div class="no">40</div><div class="sh"></div></div>
+   <div class="face back page blank"><div class="in"><div class="orn"><svg><use href="#h"/></svg></div></div><div class="sh"></div></div></div>
+  <div class="leaf cv">
+   <div class="face leather"><div class="frame"><span class="dia"></span><span class="dia"></span><span class="dia"></span><span class="dia"></span></div><div class="endnote"><svg class="heart"><use href="#h"/></svg><div class="e1 gold" data-t="ONE LAST THING">ONE LAST THING</div><div class="line"></div><div class="e2 gold" data-t="Close The Book">Close The Book</div></div><div class="sh"></div></div>
+   <div class="face back leather"><div class="frame bk"><span class="dia"></span><span class="dia"></span><span class="dia"></span><span class="dia"></span></div><div class="ctitle"><svg class="heart"><use href="#h"/></svg><div class="what gold" data-t="THIS IS MY">THIS IS MY</div><div class="piyu gold" data-t="Last Gift">Last Gift</div><div class="mrow"><span class="rl"></span><div class="means gold" data-t="FOR">FOR</div><span class="rl"></span></div><div class="anvi gold" data-t="Anvi">Anvi</div><div class="line"></div></div><div class="sh"></div></div>
+  </div>
+ </div></div>
+</div>
+<script>
+(function(){
+var wrap=document.getElementById('wrap'),stage=document.getElementById('stage'),gate=document.getElementById('gate'),ht=document.getElementById('ht'),
+leaves=[].slice.call(wrap.querySelectorAll('.leaf')),N=leaves.length,i=0,busy=false,ctx=null,master=null,nb=null,DUR=1500,EASE='cubic-bezier(.4,.08,.35,1)',Wpx=0,Z=.6;
+var HINTS=['Anvi swipe or tap to Open','Swipe or tap to turn the Page','Swipe or tap to close the Book','Swipe right to go Back'];
+function pp(){return (Wpx||320)*5}
+function rest(k,f){return 'perspective('+pp()+'px) '+(f?'rotateY(-180deg)':'rotateY(0deg)')}
+function zi(k,f){return f?k*2+2:(N-k)*2}
+Wpx=wrap.offsetWidth;
+leaves.forEach(function(l,k){l.style.transform=rest(k,false);l.style.zIndex=zi(k,false);[].forEach.call(l.querySelectorAll('.in'),function(n){[].forEach.call(n.children,function(c,x){c.style.setProperty('--i',x)})})});
+function pose(first){
+ wrap.classList.toggle('open',i>0);wrap.classList.toggle('back',i===N);
+ var t=i===0?HINTS[0]:i===N?HINTS[3]:i===N-1?HINTS[2]:HINTS[1];
+ 
+ if(first){ht.textContent=t;return}
+ ht.classList.add('o');setTimeout(function(){ht.textContent=t;ht.classList.remove('o')},300);
+}
+try{var c=document.createElement('canvas'),q=c.getContext('2d'),sm=document.createElement('canvas'),g=sm.getContext('2d');sm.width=sm.height=256;c.width=c.height=256;
+ var im=g.createImageData(256,256);for(var x=0;x<im.data.length;x+=4){im.data[x]=100;im.data[x+1]=76;im.data[x+2]=50;im.data[x+3]=Math.random()*30}
+ g.putImageData(im,0,0);q.imageSmoothingEnabled=true;q.drawImage(sm,0,0,256,256);
+ document.documentElement.style.setProperty('--noise','url('+c.toDataURL('image/png')+')')}catch(e){}
+Wpx=wrap.offsetWidth;pose(true);addEventListener('resize',function(){Wpx=wrap.offsetWidth;pose(true);fitTitle()});
+addEventListener('load',fitTitle);if(document.fonts&&document.fonts.ready){document.fonts.ready.then(fitTitle);document.fonts.addEventListener&&document.fonts.addEventListener('loadingdone',fitTitle)}else fitTitle();
+function fitGate(){var hs=[].slice.call(document.querySelectorAll('.gb h1'));if(!hs.length)return;
+ hs.forEach(function(h){h.style.fontSize='34px'});
+ var w=Math.max.apply(null,hs.map(function(h){return h.scrollWidth})),av=innerWidth*.76,sz=Math.max(10,Math.min(34,34*av/w));
+ hs.forEach(function(h){h.style.fontSize=sz+'px'})}
+fitGate();addEventListener('resize',fitGate);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitGate);
+/* audio */
+function initAudio(){if(ctx){try{if(ctx.resume)ctx.resume()}catch(e){}return}try{var AC=window.AudioContext||window.webkitAudioContext;ctx=new AC();
+ var comp=ctx.createDynamicsCompressor();comp.threshold.value=-24;comp.knee.value=18;comp.ratio.value=5;comp.attack.value=.004;comp.release.value=.2;
+ master=ctx.createGain();master.gain.value=2.2;master.connect(comp);comp.connect(ctx.destination);
+ nb=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate);var a=nb.getChannelData(0);for(var k=0;k<a.length;k++)a[k]=Math.random()*2-1;
+ try{rv=ctx.createConvolver();var L=Math.floor(ctx.sampleRate*2.8),ib=ctx.createBuffer(2,L,ctx.sampleRate);for(var c=0;c<2;c++){var d=ib.getChannelData(c);for(var z=0;z<L;z++)d[z]=(Math.random()*2-1)*Math.pow(1-z/L,3)}
+ rv.buffer=ib;var rl=ctx.createBiquadFilter();rl.type='lowpass';rl.frequency.value=4200;var rg=ctx.createGain();rg.gain.value=.5;rv.connect(rl);rl.connect(rg);rg.connect(comp)}catch(e){rv=null}
+ if(ctx.resume)ctx.resume()}catch(e){ctx=null}}
+var rv=null;
+(window.requestIdleCallback||function(f){setTimeout(f,1500)})(initAudio,{timeout:2500});
+function noise(t,dur,type,f0,f1,q,vol,flut,lp){var s=ctx.createBufferSource();s.buffer=nb;if(lp)s.loop=true;var f=ctx.createBiquadFilter();f.type=type;f.Q.value=q;
+ f.frequency.setValueAtTime(f0,t);f.frequency.exponentialRampToValueAtTime(f1,t+dur);
+ var g=ctx.createGain();g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(vol,t+dur*.3);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+ var fl=ctx.createGain();fl.gain.setValueAtTime(1,t);if(flut){for(var x=0;x<dur;x+=.022)fl.gain.setValueAtTime(.35+Math.random()*.65,t+x)}
+ s.connect(f);f.connect(g);g.connect(fl);fl.connect(master);s.start(t,Math.random());s.stop(t+dur+.05)}
+function thump(t,vol,f){var o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(f*.45,t+.2);
+ g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+.28);o.connect(g);g.connect(master);o.start(t);o.stop(t+.3);noise(t,.12,'lowpass',1400,300,.7,vol*1.1,false)}
+function chime(t){[1318.5,1760,2637].forEach(function(fr,n){var o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=fr;
+ g.gain.setValueAtTime(.0001,t+n*.09);g.gain.linearRampToValueAtTime(.11,t+n*.09+.02);g.gain.exponentialRampToValueAtTime(.0001,t+n*.09+2.2);o.connect(g);g.connect(master);o.start(t+n*.09);o.stop(t+n*.09+2.3)})}
+function bell(t,f,v){[[1,1],[2.01,.28],[3.97,.1]].forEach(function(p){var o=ctx.createOscillator(),g=ctx.createGain(),d=2.6/Math.sqrt(p[0]);o.type='sine';o.frequency.value=f*p[0];
+ g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(v*p[1],t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+d);
+ o.connect(g);g.connect(master);if(rv)g.connect(rv);o.start(t);o.stop(t+d+.05)})}
+function sndPress(){var t=ctx.currentTime+.03;
+ bell(t,2093,.05);
+ noise(t+.04,.8,'bandpass',500,1400,.7,.3,false,true)}
+function sndDoors(){var t=ctx.currentTime+.03;
+ noise(t,1.7,'lowpass',160,1100,.6,.75,false,true);
+ noise(t+.05,1.5,'highpass',3200,6500,.7,.16,true,true);
+ var o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=55;
+ g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(.18,t+.75);g.gain.exponentialRampToValueAtTime(.0001,t+1.9);
+ o.connect(g);g.connect(master);o.start(t);o.stop(t+2);
+ [[.5,659.25,.1],[.72,830.61,.1],[.94,987.77,.1],[1.23,1318.51,.1],[1.57,1975.53,.05]].forEach(function(n){bell(t+n[0],n[1],n[2])})}
+function sndTurn(heavy,last){if(!ctx)return;var t=ctx.currentTime+.02;
+ if(heavy){noise(t,1.25,'bandpass',260,1500,.8,1.1,true);noise(t+.05,1.1,'bandpass',1500,5200,.9,.7,true);thump(t+1.12,.9,95)}
+ else{noise(t,1,'bandpass',900,3800,.9,1,true);noise(t+.06,.85,'highpass',4800,7500,.7,.42,true);noise(t+.02,.7,'bandpass',300,900,.8,.35,false);if(last)thump(t+1.02,.45,120)}}
+/* title: every line is measured from its real glyph ink. Horizontally the ink itself is centred (side-bearings and trailing letter-spacing trimmed, so the gold rules sit at an equal distance from the text on both sides). Vertically front and back share ONE grid (union of both covers' ink per line), so every line lands on the same spot on both covers and the whole block is centred in the frame. */
+function fitTitle(){
+ var sc=document.getElementById('scene'),u=parseFloat(getComputedStyle(sc).width)/100,cx=document.createElement('canvas').getContext('2d');
+ if(!u)return;
+ var M=[],U={};
+ [].forEach.call(document.querySelectorAll('.ctitle [data-t]'),function(el){
+  el.style.margin='0';el.style.padding='0';el.style.left='0px';
+  var cs=getComputedStyle(el);cx.font=cs.fontStyle+' '+cs.fontWeight+' '+cs.fontSize+' '+cs.fontFamily;
+  var tx=el.getAttribute('data-t'),m=cx.measureText(tx);
+  if(m.fontBoundingBoxAscent==null||(!m.fontBoundingBoxAscent&&!m.actualBoundingBoxAscent))return;
+  var ls=parseFloat(cs.letterSpacing)||0,rg=document.createRange();rg.selectNodeContents(el);
+  var rw=Math.abs(rg.getBoundingClientRect().width),h=parseFloat(cs.height),fa=m.fontBoundingBoxAscent,fd=m.fontBoundingBoxDescent,
+   base=(h-(fa+fd))/2+fa,top=base-m.actualBoundingBoxAscent,bot=base+m.actualBoundingBoxDescent,k=el.classList[0],g=U[k]||(U[k]={t:1e9,b:-1e9});
+  g.t=Math.min(g.t,top);g.b=Math.max(g.b,bot);
+  M.push({el:el,k:k,h:h,l:m.actualBoundingBoxLeft,r:m.actualBoundingBoxRight+ls*(tx.length-1),rw:rw})});
+ M.forEach(function(o){var g=U[o.k];
+  o.el.style.margin=(-g.t)+'px '+(o.r-o.rw)+'px '+(-(o.h-g.b))+'px '+o.l+'px'});
+ [].forEach.call(document.querySelectorAll('.heart'),function(hr){var hh=parseFloat(getComputedStyle(hr).height);hr.style.marginTop=(-hh*4.4/24)+'px';hr.style.marginBottom=(-hh*3/24)+'px'});
+ [].forEach.call(document.querySelectorAll('.ctitle .line'),function(ln){ln.style.marginTop=ln.style.marginBottom=(u*1.1)+'px'});
+}
+/* text fit: every page gets the largest text size that still fits it (capped), so nothing can ever overflow */
+var fitTimer=0,fitted=false;
+function vis(){for(var k=0;k<N;k++)leaves[k].style.display=(k>0&&k<N-1&&(k<i-3||k>i+3))?'none':''}
+function fitPages(){
+ if(fitted&&gate.classList.contains('go'))return;
+ leaves.forEach(function(l){l.style.display=''});
+ var pg=[].slice.call(wrap.querySelectorAll('.face.page:not(.back)'));
+ if(!pg.length)return;
+ pg.forEach(function(page){
+  var cs=getComputedStyle(page),lim=page.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom),inn=page.querySelector('.in'),p=page.querySelector('p');
+  function ok(x){p.style.setProperty('--fs',x);return inn.offsetHeight<=lim-1}
+  p.style.removeProperty('--lh');var lo=1.2,hi=3.4,best=hi;
+  if(!ok(hi)){for(var n=0;n<14;n++){var m=(lo+hi)/2;if(ok(m))lo=m;else hi=m}best=lo*.97}
+  p.style.setProperty('--fs',best.toFixed(3));
+  function okl(x){p.style.setProperty('--lh',x);return inn.offsetHeight<=lim-1}
+  var a=1.45,z=1.78;if(okl(z)){a=z}else{p.style.setProperty('--lh',a);for(var q=0;q<10;q++){var mm=(a+z)/2;if(okl(mm))a=mm;else z=mm}}
+  p.style.setProperty('--lh',a.toFixed(3))});
+ fitted=true;vis()}
+if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){fitPages()});if(document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',function(){clearTimeout(fitTimer);fitTimer=setTimeout(fitPages,60)})}else fitPages();
+setTimeout(fitPages,1500);
+/* flip: pages swing on the spine, book itself never moves, scales or rotates */
+function sh(el,fr){var e=el&&el.querySelector('.sh');if(e)e.animate(fr,{duration:DUR,easing:EASE})}
+function on(a,b,c){return[{opacity:a},{opacity:b,offset:.5},{opacity:c}]}
+function flip(dir){
+ if(busy)return;var k=dir>0?i:i-1;if(dir>0&&i>=N)return;if(dir<0&&i<=0)return;
+ var l=leaves[k];
+ if(l._an){l._q=dir;busy=true;return}
+ busy=true;setTimeout(function(){busy=false},DUR*.7);wrap.classList.add('open');
+ var P=pp(),a0=dir>0?0:-180,a1=dir>0?-180:0,kf=[];
+ for(var j=0;j<=12;j++){var t=j/12;kf.push({transform:'perspective('+P+'px) rotateY('+(a0+(a1-a0)*t).toFixed(2)+'deg)',offset:t})}
+ l.style.zIndex=99;l.style.transform=rest(k,dir>0);
+ var an=l.animate(kf,{duration:DUR,easing:EASE,fill:'forwards'});l._an=an;
+ an.onfinish=function(){l._an=null;l.style.zIndex=zi(k,dir>0);requestAnimationFrame(function(){requestAnimationFrame(function(){try{an.cancel()}catch(e){}})});if(l._q){var q=l._q;l._q=0;busy=false;flip(q)}};
+ sh(l.children[0],dir>0?on(0,.6,.6):on(.6,.6,0));
+ sh(l.children[1],dir>0?on(.6,.6,0):on(0,.6,.6));
+ var under=leaves[k+1];if(under)sh(under.children[0],dir>0?[{opacity:.5},{opacity:0}]:[{opacity:0},{opacity:.5,offset:.8},{opacity:0}]);
+ i+=dir;vis();
+ requestAnimationFrame(function(){pose();setTimeout(function(){sndTurn(k===0,k===N-1)},40)});
+}
+/* repaint kick: forces full-frame redraws around fullscreen so the surface never stays black */
+var kEnd=0,kOn=false,kv=0;
+function kick(ms){var bg=document.getElementById('bgfill');kEnd=Math.max(kEnd,Date.now()+ms);if(kOn)return;kOn=true;
+ (function f(){kv^=1;bg.style.background=kv?'#fffffe':'#fff';if(Date.now()<kEnd)requestAnimationFrame(f);else{kOn=false;bg.style.background='#fff'}})()}
+['fullscreenchange','webkitfullscreenchange'].forEach(function(n){document.addEventListener(n,function(){kick(1800)})});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)kick(1200)});
+/* enter */
+document.getElementById('enter').addEventListener('click',function(){
+ if(gate.classList.contains('go'))return;
+ fitPages();initAudio();
+ if(ctx)sndPress();
+ gate.classList.add('go');kick(1500);
+ var need=2,t0=Date.now(),started=false,fired=false;
+ function startDoors(){if(started)return;started=true;
+  if(ctx)setTimeout(sndDoors,150);
+  /* doors and book are started in the same frame; the book's rise carries a .75s delay (0.15s door delay + ~0.6s to reach 25%), so both run on one timeline with no timer jitter */
+  fitTitle();gate.classList.add('open');stage.classList.add('in');setTimeout(fitTitle,1200);
+  setTimeout(function(){gate.classList.add('hide')},1900);
+  setTimeout(function(){document.body.classList.add('shown')},3000)}
+ function ready(){if(--need>0)return;setTimeout(startDoors,Math.max(0,1500-(Date.now()-t0)))}
+ function fsDone(){if(fired)return;fired=true;setTimeout(ready,180)}
+ (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(ready,ready);
+ try{var el=document.documentElement,rf=el.requestFullscreen||el.webkitRequestFullscreen;if(rf){var p=rf.call(el);if(p&&p.then)p.then(fsDone,fsDone);else setTimeout(fsDone,400)}else fsDone()}catch(e){fsDone()}
+ setTimeout(fsDone,900);
+});
+/* input */
+var sx=0,sy=0,t0=0;
+document.addEventListener('pointerdown',function(e){sx=e.clientX;sy=e.clientY;t0=Date.now()});
+document.addEventListener('pointerup',function(e){
+ if(gate.className.indexOf('hide')<0)return;
+ var dx=e.clientX-sx,dy=e.clientY-sy;
+ if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){flip(dx<0?1:-1)}
+ else if(Math.abs(dx)<12&&Math.abs(dy)<12&&Date.now()-t0<500){flip(i>=N||(i>0&&e.clientX<innerWidth*.3)?-1:1)}
+});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' ')flip(1);if(e.key==='ArrowLeft')flip(-1)});
+})();
+</script>
+</body>
+</html>
